@@ -2,8 +2,9 @@
 import sys
 import pygame
 import tkinter as tk
-from tkinter import NO, filedialog
+from tkinter import filedialog
 import json
+from pygame.locals import *
 from pygame_Textinput import *
 root = tk.Tk()
 root.withdraw()
@@ -13,8 +14,8 @@ pygame.init()
 fps = 60
 fpsClock = pygame.time.Clock()
 width, height = 640, 480
-screen = pygame.display.set_mode((width, height))
-pygame.display.set_caption(" import export test")
+screen = pygame.display.set_mode((width, height), NOFRAME ,32)
+pygame.display.set_caption("import export test")
 white = (255, 255, 255)
 green = (0, 255, 0)
 blue = (0, 0, 128)
@@ -154,9 +155,9 @@ while True:
     textRect.center = (width // 2, height // 2)
     for object in objects:
         object.process()
-    screen.blit(text, (width / len(importedText) , 390))
-    screen.blit(instructions,  (10 , (height // 2) + 2))
-    screen.blit(instructions2,  (10 , (height // 2) + (2* 18)))
+    screen.blit(text, (width / len(importedText), 390))
+    screen.blit(instructions,  (10, (height // 2) + 2))
+    screen.blit(instructions2,  (10, (height // 2) + (2 * 18)))
     pygame.display.flip()
     pygame.display.update()
     fpsClock.tick(fps)
